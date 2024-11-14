@@ -56,12 +56,12 @@
   }
   
   .action-button.edit {
-    background-color: #28a745;
+    background-color: #f94444;
     color: white;
   }
   
   .action-button.edit:hover {
-    background-color: #218838;
+    background-color: #eb6125;
   }
   
   .action-button.delete {

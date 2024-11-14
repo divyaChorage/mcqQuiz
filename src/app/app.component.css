@@ -35,13 +35,13 @@ body {
   }
   
   input[type="text"]:focus, input[type="number"]:focus {
-    border-color: #4CAF50;
+    border-color: #ff5e42;
     outline: none;
   }
   
   /* Button styles */
   button {
-    background-color: #4CAF50;
+    background-color: #ed3a12;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -51,16 +51,16 @@ body {
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #ff4500;
   }
   
   /* Adding styles for Already Logged button */
   button:nth-child(2) {
-    background-color: #f44336;
+    background-color: #1c7e81;
   }
   
   button:nth-child(2):hover {
-    background-color: #e53935;
+    background-color: #8e0d0b;
   }
   
   /* Navigation Container */

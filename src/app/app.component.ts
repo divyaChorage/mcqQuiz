@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'Autoplant';
   url:string='http://localhost:9090/';
   
+
+  showDashboard:number=0;
   userId:number=0;
 
   user:any

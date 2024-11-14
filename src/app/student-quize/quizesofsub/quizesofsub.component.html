@@ -1,4 +1,12 @@
 <p>Quizzes</p>
+
+
+
+
+<a routerLink="/student-quiz"> Go To Student Quiz</a>
+
+<div class="quiz-container">
+
 <button (click)="viewScore()">View Score</button>
 <div *ngIf="showViewScore==1">
   <p>Total Questions: {{ totalMcqQuestions }}</p>
@@ -8,7 +16,41 @@
 
 </div>
 
+
 <button (click)="reviewTest()">Review Test</button>
+
+<div *ngIf="showReview">
+  <h3>Review Test</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>Correct Answer</th>
+        <th>Your Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of mcqDetails; let i = index">
+        <td>{{ i + 1 }}</td> <!-- Numbering each question -->
+        <td>{{ item.question }}</td>
+        <td>{{ item.correctAnswer }}</td>
+        <td>
+          <span
+            [ngClass]="{
+              'correct-answer': item.correctAnswer === reviewData[i]?.userAnswers,
+              'incorrect-answer': item.correctAnswer !== reviewData[i]?.userAnswers
+            }"
+          >
+            {{ reviewData[i]?.userAnswers || 'Not Attempted' }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
 
 <table>
   <tbody>

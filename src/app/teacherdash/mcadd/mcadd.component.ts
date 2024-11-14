@@ -73,21 +73,80 @@ this.loadMcq();
     let url = this.app.url + 'deleteQuiz' + '/' + id;
   
     // Make the DELETE request to the backend
-    this.http.delete(url).subscribe(
-      (data) => {
-        // Log the data (optional, for debugging)
-        console.log("Quiz deleted, response: ", data);
-        
-        // After successful deletion, update the UI by removing the quiz from the list
-        this.mcqs = this.mcqs.filter(mcq => mcq.id !== id); // Remove the quiz from the array
-  
-        // Optionally, you can reload the list of quizzes from the server
-        // this.loadMcq();
-      },
-      (error) => {
-        console.error("Error deleting quiz: ", error); // Handle error case
+    this.http.delete(url).subscribe((data)=>
+    {
+      if(data===1)
+      {
+        this.mcqs = this.mcqs.filter(mcq => mcq.id !== id); 
+window.alert("delete succfullly")
       }
-    );
+      else if(data===-1)
+      {
+window.alert("quiz not  found")
+      } else if(data===0)
+        {
+          window.alert("somethinf is wrong")
+
+        }
+        else
+        {
+          window.alert("somethinf is wrong")
+        }
+
+    })
+  }
+
+
+
+  showUpdateForm:Boolean=false
+  currentMcqId:number=-1;
+
+  editQuiz(mcq: any) {
+    this.showUpdateForm = true;
+    this.currentMcqId = mcq.id;
+    this.question = mcq.question;
+    this.optionA = mcq.optionA;
+    this.optionB = mcq.optionB;
+    this.optionC = mcq.optionC;
+    this.optionD = mcq.optionD;
+    this.correctAnswer = mcq.correctAnswer;
+  }
+
+  updateQuiz() {
+    const updatedMcq = {
+      id: this.currentMcqId,
+      question: this.question,
+      optionA: this.optionA,
+      optionB: this.optionB,
+      optionC: this.optionC,
+      optionD: this.optionD,
+      correctAnswer: this.correctAnswer
+    };
+
+    console.log(updatedMcq,"----updayedMcq")
+    let url = this.app.url + 'updateQuiz' + '/' +this.currentMcqId;
+  
+    this.http.put(url, updatedMcq).subscribe((data: any) => {
+      const index = this.mcqs.findIndex(mcq => mcq.id === this.currentMcqId);
+      if (index > -1) {
+        this.mcqs[index] = updatedMcq; // Update the MCQ in the list
+      }
+      this.resetForm();
+    });
   }
   
+  cancelUpdate() {
+    this.resetForm();
+  }
+  resetForm() {
+    this.question = '';
+    this.optionA = '';
+    this.optionB = '';
+    this.optionC = '';
+    this.optionD = '';
+    this.correctAnswer = '';
+    this.showUpdateForm = false;
+    this.currentMcqId = -1;
+  }
+
 }

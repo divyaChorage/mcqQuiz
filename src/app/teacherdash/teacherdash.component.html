@@ -1,6 +1,5 @@
 <p>Teacher Dashboard</p>
 
-
 <div *ngIf="showMcqAddForm==0">
 <div class="table-container">
   <table class="table">
@@ -17,8 +16,9 @@
         <td>{{ quiz.subject }}</td>
         <td>
           <button  (click)="addQuize(quiz.id)" class="action-button edit">AddQuize</button>
-          <button (click)="deleteQuiz(quiz.id)" class="action-button delete">Delete</button>
-        </td>
+                 <button  (click)="deleteSubject(quiz.id)" class="action-button edit">Delete subject</button>
+
+ </td>
 
       </tr>
     </tbody>

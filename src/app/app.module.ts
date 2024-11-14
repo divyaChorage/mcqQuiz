@@ -9,7 +9,17 @@ import { StudentQuizeComponent } from './student-quize/student-quize.component';
 import { TeacherdashComponent } from './teacherdash/teacherdash.component';
 import { McaddComponent } from './teacherdash/mcadd/mcadd.component';
 import { QuizesofsubComponent } from './student-quize/quizesofsub/quizesofsub.component';
+import { Routes } from '@angular/router';
 
+
+const routes: Routes = [
+  { path: 'student-quiz', component: StudentQuizeComponent },
+  { path: 'app-teacherdash', component: TeacherdashComponent },
+  { path: 'app-mcadd', component: McaddComponent },
+  { path: 'app-quizesofsub', component: QuizesofsubComponent },
+  { path: '', redirectTo: '/student-quiz', pathMatch: 'full' }, // Default route
+  { path: '**', redirectTo: '/student-quiz' } // Wildcard route for invalid paths
+];
 @NgModule({
   declarations: [
     AppComponent,

@@ -45,7 +45,6 @@ export class TeacherdashComponent {
     });
   }
 
- // teacherdash.component.ts
 
 addSub() {
   const obj = { subject: this.subject };
@@ -77,4 +76,26 @@ addSub() {
     console.log("Editing quiz:", quizId);
     // Implement logic for editing the quiz
   }
+
+
+
+  deleteSubject(id:number)
+{
+  const url = this.app.url + 'deleteSubjById/' + id;
+  this.http.delete(url).subscribe((data) => {
+    console.log("-----subjects for quiz-------",data);
+
+    if(data==1)
+    {
+      this.quizzes = this.quizzes.filter((data)=>data.id!=id);
+      window.alert("delete subject")
+    }
+    else{
+      window.alert("subject has  quizes  so can no t be deleeted")
+    }
+    
+ 
+  });
+}
+
 }

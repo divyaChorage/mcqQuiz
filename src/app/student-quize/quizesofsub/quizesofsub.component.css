@@ -69,3 +69,87 @@ table {
     margin: 8px 0;
   }
   
+
+  /* Styling for the quiz component */
+.quiz-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.quiz-container h3 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quiz-container p {
+  color: #666;
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+/* Styling for buttons */
+.quiz-container button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.quiz-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the review table */
+.quiz-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+.quiz-container th,
+.quiz-container td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.quiz-container th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.quiz-container tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Styling for correct and incorrect answers */
+.correct-answer {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.incorrect-answer {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Hover effect on table rows */
+.quiz-container tbody tr:hover {
+  background-color: #e9ecef;
+}

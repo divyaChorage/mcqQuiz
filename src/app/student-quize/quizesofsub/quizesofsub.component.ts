@@ -80,13 +80,7 @@ this.showViewScore=1;
   }
   
 
-    reviewTest()
-    {
-      let url=this.app.url + 'reviewTest'+'/'+this.stdQuiz.subjectId+'/'+this.app.userId
-      this.http.get(url).subscribe((response) => {
-        console.log('your score:', response);
-      });
-    }
+  
 
 
 
@@ -108,5 +102,43 @@ this.showViewScore=1;
       });
 }
 
+
+public reviewData: any[] = []; // Store review data
+public mcqDetails: any[] = []; // Store fetched MCQ details
+public showReview: boolean = false; // Toggle for review section
+
+reviewTest() {
+  const url = this.app.url + 'reviewTest/' + this.app.userId + '/' + this.stdQuiz.subjectId;
+  this.http.get<any[]>(url).subscribe((response) => {
+    if (response && response.length > 0) {
+      console.log("respose of userAns----",response)
+      this.reviewData = this.reviewData.concat(response);; // Store the review data
+      this.showReview = true;
+      this.getMcqAnswerBasedOnIds();
+    } else {
+      console.log('No review data found.');
+    }
+  });
 }
 
+
+
+getMcqAnswerBasedOnIds() {
+  
+
+  const url = this.app.url + 'reviewTestDetails/'+this.stdQuiz.subjectId;
+  this.http.get<any[]>(url).subscribe((response)=>{
+    if (response) {
+      console.log("respose  of  que and  ans----",response)
+
+      this.mcqDetails = response; // Store the fetched MCQ details
+      console.log('MCQ details:', this.mcqDetails);
+    } else {
+      console.log('No MCQ details found.');
+    }
+  });
+}
+
+
+
+}
