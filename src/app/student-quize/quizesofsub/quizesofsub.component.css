@@ -1,0 +1,71 @@
+/* Container styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  /* Quiz heading styling */
+  p {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Question and options styling */
+  td {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  td p {
+    font-size: 1em;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  label {
+    font-size: 0.9em;
+    color: #555;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  /* Buttons styling */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* View Score section styling */
+  div[ngIf] {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+  
+  div[ngIf] p {
+    font-size: 1em;
+    color: #333;
+    margin: 8px 0;
+  }
+  

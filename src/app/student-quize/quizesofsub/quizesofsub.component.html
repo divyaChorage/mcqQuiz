@@ -1,0 +1,35 @@
+<p>Quizzes</p>
+<button (click)="viewScore()">View Score</button>
+<div *ngIf="showViewScore==1">
+  <p>Total Questions: {{ totalMcqQuestions }}</p>
+  <p>Your Score: {{ yourScore }}</p>
+  <p>Number of Attempts: {{ numberOfAttempts }}</p>
+
+
+</div>
+
+<button (click)="reviewTest()">Review Test</button>
+
+<table>
+  <tbody>
+    <tr *ngFor="let mcq of mcqs">
+      <td>
+        <p>Question: {{ mcq.question }}</p>
+        <div *ngFor="let option of ['optionA', 'optionB', 'optionC', 'optionD']">
+          <label>
+            <input
+              type="radio"
+              [name]="'option-' + mcq.id"
+              [value]="mcq[option]"
+              [(ngModel)]="selectedAnswers[mcq.id]"
+            />
+            {{ mcq[option] }}
+          </label>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="submitAnswers()">Submit Answers</button>
+
+   

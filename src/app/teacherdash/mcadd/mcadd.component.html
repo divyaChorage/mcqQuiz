@@ -1,0 +1,68 @@
+<p>mcadd works!</p>
+<div class="mcq-form-container">
+    <!-- Add New MCQ Form -->
+    <h2>Add a New Quiz Question</h2>
+    <form (ngSubmit)="addQuizes()">
+      <div class="form-group">
+        <label for="question">Question:</label>
+        <input type="text" id="question" [(ngModel)]="question" name="question" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="optionA">Option A:</label>
+        <input type="text" id="optionA" [(ngModel)]="optionA" name="optionA" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="optionB">Option B:</label>
+        <input type="text" id="optionB" [(ngModel)]="optionB" name="optionB" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="optionC">Option C:</label>
+        <input type="text" id="optionC" [(ngModel)]="optionC" name="optionC" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="optionD">Option D:</label>
+        <input type="text" id="optionD" [(ngModel)]="optionD" name="optionD" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="correctAnswer">Correct Answer:</label>
+        <input type="text" id="correctAnswer" [(ngModel)]="correctAnswer" name="correctAnswer" required>
+      </div>
+  
+      <button  (click)="addQuizes()" class="btn btn-primary">Add Question</button>
+    </form>
+  </div>
+  
+  <div class="mcqs-list">
+    <h2>Existing MCQs</h2>
+    <table *ngIf="mcqs && mcqs.length > 0" class="table">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Option A</th>
+          <th>Option B</th>
+          <th>Option C</th>
+          <th>Option D</th>
+          <th>Correct Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mcq of mcqs">
+          <td>{{ mcq.question }}</td>
+          <td>{{ mcq.optionA }}</td>
+          <td>{{ mcq.optionB }}</td>
+          <td>{{ mcq.optionC }}</td>
+          <td>{{ mcq.optionD }}</td>
+          <td>{{ mcq.correctAnswer }}</td>
+          <td><button (click)="deleteQuiz(mcq.id)" class="action-button delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="!mcqs || mcqs.length === 0">No questions available.</p>
+  </div>

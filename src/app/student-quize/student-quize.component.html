@@ -1,0 +1,20 @@
+<p>student-quize works!</p>
+
+<div *ngIf="opneQuizes==0">
+
+<h1>select  subject</h1>
+<table>
+<tbody>
+          <tr *ngFor="let quiz of quizzes; let i = index">
+    <!--        <td>{{ i + 1 }}</td> -->
+          <button (click)="gettingQuizForThisSub(quiz.id)"><td>{{ quiz.subject }}</td></button>  
+            
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div *ngIf="opneQuizes==1">
+        <app-quizesofsub></app-quizesofsub>
+    </div>

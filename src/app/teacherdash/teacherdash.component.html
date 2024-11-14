@@ -1,0 +1,41 @@
+<p>Teacher Dashboard</p>
+
+
+<div *ngIf="showMcqAddForm==0">
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Subject Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let quiz of quizzes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ quiz.subject }}</td>
+        <td>
+          <button  (click)="addQuize(quiz.id)" class="action-button edit">AddQuize</button>
+          <button (click)="deleteQuiz(quiz.id)" class="action-button delete">Delete</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <input [(ngModel)]="subject" placeholder="Enter subject name" />
+  <button (click)="addSub()">Add Subject</button>
+</div>
+
+</div>
+
+
+<!-- ************************** -->
+
+<div *ngIf="showMcqAddForm==1">
+     <app-mcadd></app-mcadd>
+</div>
+    
