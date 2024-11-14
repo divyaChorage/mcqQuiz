@@ -15,6 +15,6 @@ public interface McqRepo extends JpaRepository<Mcq, Integer>{
 	
 	List<Mcq>  getAllMcqBySubjectId(int subjectId);
 	
-
+   int countBySubject_id(int subjectID);
 
 }

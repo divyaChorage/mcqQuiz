@@ -38,21 +38,30 @@ public class McqController {
    
     
     @DeleteMapping("deleteQuiz/{id}")
-    public ResponseEntity<String> deleteQuiz(@PathVariable("id") int id) {
+    public int deleteQuiz(@PathVariable("id") int id) {
         try {
             int result = mcqImpl.deleteMcq(id); // Call deleteMcq from the service layer
             
             if (result == 1) {
-                return ResponseEntity.ok("Quiz deleted successfully"); // Successfully deleted
+                return 1;// Successfully deleted
             } else if (result == -1) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Quiz not found"); // Quiz not found
+                return -1; // Quiz not found
             } else {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting quiz"); // Internal error
+                return  0;// Internal error
             }
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting quiz: " + e.getMessage());
+            return 2;
         }
     }
+    
+    
+
+    @PutMapping("updateQuiz/{id}")
+    public Mcq updateQuizzes(@RequestBody Mcq mcq,@PathVariable int id) {
+         return mcqImpl.updateMcqBycqId(mcq, id);
+        
+    }
+    
     
     
     @GetMapping("getAllSubjects/{userId}")
@@ -62,6 +71,23 @@ public class McqController {
         return ResponseEntity.ok(mcqs);
     }
 
+    
+    
+    @DeleteMapping("deleteSubjById/{subjectId}")
+    public int deleteSubject(@PathVariable int subjectId) {
+        try {
+            int result = mcqImpl.deleteSubject(subjectId) ;// Call deleteMcq from the service layer
+            
+            if (result == 1) {
+                return 1;// Successfully deleted
+            } else 
+                return -1; // Quiz not found
+           
+        } catch (Exception e) {
+            return 2;
+        }
+    }
+    
     
     
 

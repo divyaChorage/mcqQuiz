@@ -63,5 +63,29 @@ public class UserController {
 	        return ResponseEntity.notFound().build();
 	    }
 	    
+	    
+	    @GetMapping("reviewTest/{userId}/{subjectId}")
+	    public ResponseEntity<List<SubmittedAns>> reviewTest(
+	    		@PathVariable int userId, @PathVariable int subjectId) {
+	        List<SubmittedAns> reviewData = mcqImpl.getReviewTest(subjectId, userId);
+	        if (reviewData != null && !reviewData.isEmpty()) {
+	            return ResponseEntity.ok(reviewData);
+	        }
+	        return ResponseEntity.notFound().build();
+	    }
+	    
+	    
+	    @GetMapping("reviewTestDetails/{subjectId}")
+	   public ResponseEntity<List<Mcq>> getReviewTestDetails(@PathVariable int subjectId) {
+	        System.out.println(" getting mcqs ids  to return ans----"+subjectId);
+
+	    	List<Mcq> mcqs = mcqImpl.getMcqsByIds(subjectId);
+	        
+	        System.out.println(" returring que and  corret and-----"+mcqs);
+	        return ResponseEntity.ok(mcqs);
+	    }
+
+
+	    
 	   
 }

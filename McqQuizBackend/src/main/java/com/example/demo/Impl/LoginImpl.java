@@ -6,7 +6,7 @@ import com.example.demo.entity.Login;
 import com.example.demo.entity.Subjects;
 
 public interface LoginImpl {
-   
+
 	
 	public int saveUser(Login data);
 	public Login loginUser(String email,Long password);

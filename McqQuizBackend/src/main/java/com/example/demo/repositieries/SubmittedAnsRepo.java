@@ -13,5 +13,6 @@ import com.example.demo.entity.SubmittedAns;
 public interface SubmittedAnsRepo  extends JpaRepository<SubmittedAns, Integer> {
     List<SubmittedAns> findByUserIdAndSubjectId(int userId, int subjectId);
     
+
    
 }

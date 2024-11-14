@@ -101,7 +101,7 @@ public class Mcq {
 				+ ", optionC=" + optionC + ", optionD=" + optionD + ", correctAnswer=" + correctAnswer + ", subject="
 				+ subject + "]";
 	}
-
+	
     
     
 }

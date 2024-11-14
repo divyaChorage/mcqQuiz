@@ -1,7 +1,7 @@
 package com.example.demo.Service;
 
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Impl.McqImpl;
+
 import com.example.demo.entity.Mcq;
 import com.example.demo.entity.ReviewTestDTO;
 import com.example.demo.entity.Subjects;
@@ -104,6 +105,57 @@ public class McqService implements McqImpl{
 		 List<Subjects> sub=subjectRepo.findByLoginId(loginId);
   
   return sub;
+	}
+	
+	@Override
+	public List<SubmittedAns> getReviewTest(int subjectId, int userId) {
+	    // Logic to retrieve submitted answers along with the question and correct answers
+	    return submittedAnsRepo.findByUserIdAndSubjectId(userId, subjectId);
+	}
+
+	
+	
+	@Override
+	public List<Mcq> getMcqsByIds(int subjectId) {
+        System.out.println(" getting mcqs ids  to return ans in servce----"+subjectId);
+
+
+	    return mcqRepo.getAllMcqBySubjectId(subjectId);
+	}
+	
+	
+
+	@Override
+	public Mcq updateMcqBycqId(Mcq mcq,int mcqId) {
+		System.out.println("for updating mcq is ----"+mcq+"---id s --"+mcqId);
+	Mcq mcqs=mcqRepo.findById(mcqId).get();
+	System.out.println("for updating mcq is fro db ----"+mcqs);
+
+	 mcqs.setQuestion(mcq.getQuestion());
+	 mcqs.setOptionA(mcq.getOptionA());
+	 mcqs.setOptionB(mcq.getOptionB());
+	 mcqs.setOptionC(mcq.getOptionC());
+	 mcqs.setOptionD(mcq.getOptionD());
+
+  mcqs.setCorrectAnswer(mcq.getCorrectAnswer());
+  mcqRepo.save(mcqs);
+	 
+		return null;
+	}
+
+	@Override
+	public int deleteSubject(int subjectId) {
+		 int count= mcqRepo.countBySubject_id(subjectId);
+		 System.out.println("count for delet sub---"+count+"---subjectID---"+subjectId);
+		 if(count==0)
+		 {
+			 subjectRepo.deleteById(subjectId);
+			 return 1;
+		 }
+		 else
+		 {
+			 return -1;
+		 }
 	}
 
 	
