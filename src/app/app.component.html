@@ -7,6 +7,17 @@
   <button (click)="alreadyLogged()">Already Logged</button>
 </div>
 
+
+
+<div *ngIf="navigate == 1">
+  <app-teacherdash></app-teacherdash>
+</div>
+
+<div *ngIf="navigate == 2">
+  <app-student-quize></app-student-quize>
+</div>
+
+
 <div class="student-login-form" *ngIf="showLoginForm == 2">
   <h2>Student Login</h2>
   <label for="username">Email:</label>
@@ -16,12 +27,4 @@
   <input id="password" type="text" [(ngModel)]="password">
   
   <button (click)="login()">Login</button>
-</div>
-
-<div *ngIf="navigate == 1">
-  <app-teacherdash></app-teacherdash>
-</div>
-
-<div *ngIf="navigate == 2">
-  <app-student-quize></app-student-quize>
 </div>
